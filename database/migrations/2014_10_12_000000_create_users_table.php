@@ -19,8 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedInteger('absent')->nullable();
+            $table->unsignedInteger('user_role');
+            $table->unsignedInteger('id_class')->nullable();
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function ($table) {
+            $table->foreign('id_class')->references('id')->on('class_rooms');
         });
     }
 
