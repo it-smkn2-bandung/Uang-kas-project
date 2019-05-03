@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('id_class')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::table('users', function ($table) {
